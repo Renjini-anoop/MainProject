@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="demoProject">
+<parameter name="userName" value="admins"></parameter>
+<parameter name="password" value="admins"></parameter>
+<test thread-count="5" name="Test">
+    <classes>
+      <class name="test.HomePage">
+      <methods>
+      <include name ="loginVerifyWrUserAndWrPasswd"></include>
+      </methods>
+      </class>
+      <class name="test.LogoutTest"/>
+    </classes>
+  </test> <!-- TestNgClassesDemo -->
+</suite>
