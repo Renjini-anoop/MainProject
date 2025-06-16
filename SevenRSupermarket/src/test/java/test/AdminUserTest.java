@@ -2,18 +2,26 @@ package test;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import java.io.IOException;
+
+import org.openqa.selenium.WebDriver;
 
 import constant.Constants;
-import loginpageclass.AdminUser;
-import loginpageclass.HomePage;
-import loginpageclass.LoginpageClass;
+import pageclass.AdminUser;
+import pageclass.HomePage;
+import pageclass.LoginpageClass;
+import utilities.ExcelUtility;
+import utilities.FakeUtility;
 
 
 public class AdminUserTest extends Base {
+	LoginpageClass login;
 	HomePage home;
 	AdminUser adminusers;
+	FakeUtility fakedata=new FakeUtility();
 	 @Test
-	 public void adminUser() {
+	 public void adminUser() throws IOException
+	 {
 		 /*
 		 LoginpageClass loginpage = new LoginpageClass(driver);
 		 loginpage.enterUsernameAndPassword("admin", "admin");
@@ -25,12 +33,18 @@ public class AdminUserTest extends Base {
 		 loginadmin.clickOnSave();
 		*/
 		 LoginpageClass loginpage = new LoginpageClass(driver);
-		 loginpage.enterUsernameAndPassword("admin", "admin");
+		 
+			String usernameField=ExcelUtility.readStringData(1, 0, "LoginPageTest");
+			String passwordField=ExcelUtility.readStringData(1, 1,"LoginPageTest" );
+			loginpage.enterUsernameAndPassword(usernameField, passwordField);
+			//loginpage.enterUsernameAndPassword("admin", "admin");
 		 home=loginpage.clickOnLoginButton();
 		 adminusers=home.clickOnAdminUser();
-		 adminusers.clickOnNew().enterUsernameAndPassword().usertypeDropDown().clickOnSave();
 		 
-		 
+		//here we use fakeutitlity class to generate new data each time
+		 String userNameAd=fakedata.getFakeFirstName();
+		 String passwordAd=fakedata.getPassword();
+		 adminusers.clickOnNew().enterUsernameAndPassword(userNameAd, passwordAd).usertypeDropDown().clickOnSave();
 		 boolean loginAlertDisplayed = adminusers.isAlertDisplayed();
 		 Assert.assertTrue(loginAlertDisplayed, Constants.USERMESSAGE);
 	 }

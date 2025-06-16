@@ -1,4 +1,4 @@
-package loginpageclass;
+package pageclass;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,9 +7,11 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import utilities.WaitUtility;
+import utilities.PageUtilities;
 
 public class SearchClass {
 	public WebDriver driver;
+	PageUtilities pageUtility= new PageUtilities();
 	WaitUtility searchutility = new WaitUtility();
 	public SearchClass(WebDriver driver)
 	{
@@ -22,6 +24,7 @@ public class SearchClass {
 	@FindBy(xpath="//select[@id='ut']")WebElement userTypeSearch;
 	@FindBy(xpath="//button[@class='btn btn-block-sm btn-danger' and @name='Search']")WebElement search;
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")WebElement loginAlert;
+	
 	public SearchClass clickOnAdminUser()
 	{
 		adminuser.click();

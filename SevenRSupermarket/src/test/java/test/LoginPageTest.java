@@ -1,13 +1,16 @@
 package test;
 
+import java.io.IOException;
+
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import constant.Constants;
-import loginpageclass.HomePage;
-import loginpageclass.LoginpageClass;
+import pageclass.HomePage;
+import pageclass.LoginpageClass;
+import utilities.ExcelUtility;
 
 public class LoginPageTest extends Base {
 	HomePage home;
@@ -16,7 +19,7 @@ public class LoginPageTest extends Base {
 	@Test(priority = 1, dataProvider = "credentials")
 	public void loginVerifyCorrUserAndWrPasswd(String username, String Password) {
 		LoginpageClass loginpage = new LoginpageClass(driver);
-		loginpage.enterUsernameAndPassword("admin", "admins");
+		loginpage.enterUsernameAndPassword(username, Password);
 		//loginpage.clickOnLoginButton();
 		home = loginpage.clickOnLoginButton();
 		boolean loginAlertDisplayed = loginpage.isAlertDisplayed();
@@ -25,10 +28,13 @@ public class LoginPageTest extends Base {
 	}
 
 	// Login using wrong username and correct passwd
-	@Test(priority = 2)
-	public void loginVerifyWrUserAndCorrPasswd() {
+	@Test(groups= {"Regression"})
+	public void loginVerifyWrUserAndCorrPasswd() throws IOException {
 		LoginpageClass loginpage = new LoginpageClass(driver);
-		loginpage.enterUsernameAndPassword("admins", "admin");
+		String usernameField=ExcelUtility.readStringData(1, 0, "LoginPageTest");
+		String passwordField=ExcelUtility.readStringData(1, 1,"LoginPageTest" );
+		loginpage.enterUsernameAndPassword(usernameField, passwordField);
+		//loginpage.enterUsernameAndPassword("admins", "admin");
 		//loginpage.clickOnLoginButton();
 		home = loginpage.clickOnLoginButton();
 		boolean loginAlertDisplayed = loginpage.isAlertDisplayed();
@@ -50,16 +56,19 @@ public class LoginPageTest extends Base {
 	}
 
 	// Login using Correct username and Correct passwd
-	@Test(priority = 4)
-	public void loginVerifyCorrUserAndPasswd() {
+	@Test(groups= {"Regression"})
+	public void loginVerifyCorrUserAndPasswd() throws IOException {
 		LoginpageClass loginpage = new LoginpageClass(driver);
-		loginpage.enterUsernameAndPassword("admin", "admin");
+		String usernameField=ExcelUtility.readStringData(1, 0, "LoginPageTest");
+		String passwordField=ExcelUtility.readStringData(1, 1,"LoginPageTest" );
+		loginpage.enterUsernameAndPassword(usernameField, passwordField);
+		//loginpage.enterUsernameAndPassword("admin", "admin");
 		//loginpage.clickOnLoginButton();
 		home = loginpage.clickOnLoginButton();
 		boolean dashBoardIsLoaded = loginpage.isDashboardDisplayed();
 		System.out.println(dashBoardIsLoaded);
 		Assert.assertTrue(dashBoardIsLoaded, Constants.DASHBOARDMESSAGE);
-
+		
 	}
 
 	@DataProvider(name = "credentials")
