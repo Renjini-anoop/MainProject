@@ -6,7 +6,7 @@
 	<parameter name="browzer" value="chrome"></parameter>
 	<test thread-count="5" name="groceryapp">
 		<classes>
-			<class name="test.ManageProductTest">
+			<class name="test.ManageNewsTest">
 
 			</class>
 		</classes>

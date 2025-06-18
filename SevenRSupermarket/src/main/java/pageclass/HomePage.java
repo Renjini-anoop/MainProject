@@ -22,6 +22,7 @@ public class HomePage {
 	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-admin' and @class='small-box-footer']")WebElement adminuser;
 	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-news' and @class='small-box-footer']")WebElement manageNewsMoreInfo;
 	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-category' and @class='small-box-footer']")WebElement manageCategoryMoreInfo;
+
 	@FindBy(xpath ="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-contact' and @class='small-box-footer']")WebElement manageContactMoreInfo;
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-product' and @class='small-box-footer']")WebElement managePrdt12MoreInfo;
 	@FindBy(xpath ="//a[@href=\"https://groceryapp.uniqassosiates.com/admin/list-footertext\"and @class='small-box-footer']" )WebElement manageFooterMoreInfo;
@@ -49,11 +50,17 @@ public class HomePage {
 		manageNewsMoreInfo.click();
 		return new ManageNewsClass(driver);
 	}
-	public ManageCategoryClass manageCategory()
+	public ManageCategoryClass manageCategoryMoreInforClickNew()//taking to the new ManageCategory page
 	{
 		manageCategoryMoreInfo.click();
 		return new ManageCategoryClass(driver);
 	}
+
+	/*public ManageCategoryClass manageCategory()
+	{
+		manageCategoryMoreInfo.click();
+		return new ManageCategoryClass(driver);
+	}*/
 	
 	public ManageContact manageContactInfo()
 	{

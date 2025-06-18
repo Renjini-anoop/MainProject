@@ -29,33 +29,41 @@ public class ManageCategoryClass {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+	//webelements
+		//@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-category' and @class='small-box-footer']")WebElement manageCategoryMoreInfo;
+		@FindBy(xpath = "//a[@onclick='click_button(1)']") WebElement manageCategoryNewIcon;
+		@FindBy(xpath = "//input[@id='category']")WebElement CategoryName;
+		@FindBy(xpath = "//li[@id='134-selectable']")WebElement discountClick;
+		//@FindBy(xpath = "//input[@id='main_img']") WebElement manageCategoryChooseFileIcon;
+		@FindBy(xpath="//input[@type='file']")WebElement fileUpload;
+		@FindBy(xpath="//button[@type='submit']")WebElement saveButton;
+		
+		
+		//@FindBy(xpath="//button[@type='submit' and @name='create']") WebElement manageCategorySaveBtn;
+	 @FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")WebElement successAlert;
 	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-category' and @class='small-box-footer']")WebElement manageCategoryMoreInfo;
-	@FindBy(xpath="//a[@onclick='click_button(1)']")WebElement newButtonClick;
-	@FindBy(xpath="//input[@id='category']")WebElement category;
-	@FindBy(xpath="//li[@id='134-selectable']")WebElement discountclick;
-	@FindBy(xpath="//input[@type='file']")WebElement fileUpload;
-	@FindBy(xpath="//button[@type='submit']")WebElement saveButton;
-	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")WebElement successAlert;
 	
 	
-	public ManageCategoryClass manageCategory()
+	
+	
+	/*public ManageCategoryClass manageCategory()
 	{
 		manageCategoryMoreInfo.click();
 		return this;
-	}
+	}*/
 	public ManageCategoryClass clickOnNew()
 	{
-		newButtonClick.click();
+		manageCategoryNewIcon.click();
 		return this;
 	}
 	public ManageCategoryClass Category(String categoryName)
 	{
-		category.sendKeys("Birds");
+		CategoryName.sendKeys("Birds");
 		return this;
 	}
 	public ManageCategoryClass ClickDiscount()
 	{
-		discountclick.click();
+		discountClick.click();
 		return this;
 	}
 	
@@ -89,7 +97,7 @@ public class ManageCategoryClass {
 	}
 	public boolean isCategoryNameAdded()
 	{
-		return category.isDisplayed();
+		return CategoryName.isDisplayed();
 	}
 	
 }

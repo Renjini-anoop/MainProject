@@ -23,7 +23,7 @@ public class SearchListCategoriesTest extends Base{
 		loginpage.enterUsernameAndPassword(usernameField, passwordField);  
 	  //loginpage.enterUsernameAndPassword("admin", "admin");
 		 home=loginpage.clickOnLoginButton();
-		 home.manageCategory();
+		 home.manageCategoryMoreInforClickNew();
 		 SearchListCategories searchListCategory=new SearchListCategories(driver);
 		 searchCategory=searchListCategory.clickOnSearchIcon().addCategoryName().ClickOnSearchBtn();//storing the result in to searchcategory
 		 boolean failSearch=searchCategory.isBooksSearchDisplayed();//if the result is fail,ie the error message alert is displayed

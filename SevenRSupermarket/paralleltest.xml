@@ -7,7 +7,7 @@
 	<test name="chromeTest">
 		<parameter name="browzer" value="chrome"></parameter>
 		<classes>
-			<class name="test.ManageCategoryTest"></class>
+			<class name="test.ManageNewsTest"></class>
 			<class name="test.SearchTest"></class>
 		</classes>
 	</test>

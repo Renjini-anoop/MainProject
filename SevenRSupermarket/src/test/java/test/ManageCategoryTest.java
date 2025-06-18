@@ -36,7 +36,7 @@ public class ManageCategoryTest extends Base{
 			loginpage.enterUsernameAndPassword(usernameField, passwordField);
 		 //loginpage.enterUsernameAndPassword("admin", "admin");
 		 home=loginpage.clickOnLoginButton();
-		 managecategory=home.manageCategory();
+		 managecategory=home.manageCategoryMoreInforClickNew();
 		 String categoryNameFake=fakeData.getFakeCategoryNameBook();//using fakedata object to get different category names
 		 managecategory.clickOnNew().Category(categoryNameFake).ClickDiscount().fileUploadF1().clickOnSave();
 		 boolean successAlert=managecategory.isCategoryNameAdded();

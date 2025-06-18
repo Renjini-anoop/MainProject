@@ -11,7 +11,7 @@ public class Constants {
 	public static final String ERRORMESSAGEFORSEARCHCATEGORY="Category search failed. Please provide a valid category name";
 	
 	public static final String TESTDATAFILE=System.getProperty("user.dir")+"//src//main//resources//TestData.xlsx";
-	public static final String BOOKSIMAGEPATH=System.getProperty("user.dir")+"//src//main//resources//books.png"; //path addded
+	public static final String BOOKSIMAGEPATH=System.getProperty("user.dir")+"//src//main//resources//Birds.png"; //path addded
 	public static final String CONFIGFILE=System.getProperty("user.dir")+"//src//test//resources//config.properties";
 	
 }
